@@ -15,13 +15,13 @@ public class UniversiteController {
     @Autowired
     private IUniversiteServices iUniversiteServices;
 
-    @GetMapping("/getAll")
-    public List<Universite> getAll(){
-        return iUniversiteServices.getAll();
+    @GetMapping("/getAllUniversite")
+    public List<Universite> getAllUniversite(){
+        return iUniversiteServices.getAllUniversite();
     }
-    @GetMapping("/getById/{id}")
-    public Universite getByID(@PathVariable int id){
-        return iUniversiteServices.getByID(id);
+    @GetMapping("/getByIdUniversite/{id}")
+    public Universite getByIdUniversite(@PathVariable int id){
+        return iUniversiteServices.getByIdUniversite(id);
     }
     @DeleteMapping("/DeleteUniversite/{id}")
     public void deleteUniversite(@PathVariable int id){

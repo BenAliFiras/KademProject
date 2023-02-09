@@ -15,13 +15,13 @@ public class DepartementContoller{
     @Autowired
     private IDepartementServices iDepartementServices;
 
-    @GetMapping("/getAll")
-    public List<Departement> getAll(){
-        return iDepartementServices.getAll();
+    @GetMapping("/getAllDepartement")
+    public List<Departement> getAllDepartement(){
+        return iDepartementServices.getAllDepartement();
     }
-    @GetMapping("/getById/{id}")
-    public Departement getById(@PathVariable int id){
-        return iDepartementServices.getByID(id);
+    @GetMapping("/getByIdDepartement/{id}")
+    public Departement getByIdDepartement(@PathVariable int id){
+        return iDepartementServices.getByIdDepartement(id);
     }
     @DeleteMapping("/deleteDepartement/{id}")
     private void deleteDepartement(@PathVariable int id){

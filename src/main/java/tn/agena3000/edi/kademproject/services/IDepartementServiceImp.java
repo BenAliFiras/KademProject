@@ -23,12 +23,12 @@ public class IDepartementServiceImp implements IDepartementServices{
     }
 
     @Override
-    public List<Departement> getAll() {
+    public List<Departement> getAllDepartement() {
         return departementRepository.findAll();
     }
 
     @Override
-    public Departement getByID(Integer id) {
+    public Departement getByIdDepartement(Integer id) {
         return departementRepository.findById(id).orElse(null);
     }
 

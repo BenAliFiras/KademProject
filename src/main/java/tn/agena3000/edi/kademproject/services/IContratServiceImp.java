@@ -25,12 +25,12 @@ public class IContratServiceImp implements IContratServices{
     }
 
     @Override
-    public List<Contrat> getAll() {
+    public List<Contrat> getAllContrat() {
         return contratRepository.findAll();
     }
 
     @Override
-    public Contrat getByID(Integer id) {
+    public Contrat getByIdContrat(Integer id) {
         return contratRepository.findById(id).orElse(null);
     }
 

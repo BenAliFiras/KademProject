@@ -8,7 +8,7 @@ import java.util.List;
 public interface IEtudiantServices {
     void ajouterEtudiant(Etudiant e);
     void updateEtudiant(Etudiant e);
-    List<Etudiant> getAll();
-    Etudiant getByID(Integer id);
+    List<Etudiant> getAllEtudiant();
+    Etudiant getByIdEtudiant(Integer id);
     void deleteEtudiant(Integer id);
 }

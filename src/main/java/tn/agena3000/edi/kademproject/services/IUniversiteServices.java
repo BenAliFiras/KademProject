@@ -8,7 +8,7 @@ public interface IUniversiteServices {
 
     void ajoutUniversite(Universite u);
     void updateUniversite(Universite u);
-    List<Universite> getAll();
-    Universite getByID(Integer id);
+    List<Universite> getAllUniversite();
+    Universite getByIdUniversite(Integer id);
     void deleteUniversite(Integer id);
 }

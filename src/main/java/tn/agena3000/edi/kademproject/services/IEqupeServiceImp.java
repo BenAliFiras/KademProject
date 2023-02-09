@@ -22,12 +22,12 @@ public class IEqupeServiceImp implements IEquipeServices{
     }
 
     @Override
-    public List<Equipe> getAll() {
+    public List<Equipe> getAllEquipe() {
         return equipeRepository.findAll();
     }
 
     @Override
-    public Equipe getByID(Integer id) {
+    public Equipe getByIdEquipe(Integer id) {
         return equipeRepository.findById(id).orElse(null);
     }
 

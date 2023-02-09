@@ -15,13 +15,13 @@ public class DetailEquipeController{
     @Autowired
     private IDetailEquipeServices iDetailEquipeServices;
 
-    @GetMapping("/getAll")
-    public List<DetailEquipe> getAll(){
-        return iDetailEquipeServices.getAll();
+    @GetMapping("/getAllDetailEquipe")
+    public List<DetailEquipe> getAllDetailEquipe(){
+        return iDetailEquipeServices.getAllDetailEquipe();
     }
-    @GetMapping("/getById/{id}")
-    public DetailEquipe getById(@PathVariable int id){
-        return iDetailEquipeServices.getByID(id);
+    @GetMapping("/getByIdDetailEquipe/{id}")
+    public DetailEquipe getByIdDetailEquipe(@PathVariable int id){
+        return iDetailEquipeServices.getByIdDetailEquipe(id);
     }
     @DeleteMapping("/deleteDetailEquipe/{id}")
     private void deleteDetailEquipe(@PathVariable int id){
@@ -31,7 +31,7 @@ public class DetailEquipeController{
     public void ajouterDetailEquipe(@RequestBody DetailEquipe detailEquipe){
         iDetailEquipeServices.ajouterDetailEquipe(detailEquipe);
     }
-    @PutMapping("/updateDepartement")
+    @PutMapping("/updateDetailEquipe")
     private DetailEquipe updateDetailEquipe(@RequestBody DetailEquipe detailEquipe){
         iDetailEquipeServices.updateDetailEquipe(detailEquipe);
         return detailEquipe;

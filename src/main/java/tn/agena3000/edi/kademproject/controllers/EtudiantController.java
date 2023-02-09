@@ -17,13 +17,13 @@ public class EtudiantController {
     public String sayHello(){
         return "hello";
     }
-    @GetMapping("/getAll")
-    public List<Etudiant> getAll(){
-        return iEtudiantServices.getAll();
+    @GetMapping("/getAllEtudiant")
+    public List<Etudiant> getAllEtudiant(){
+        return iEtudiantServices.getAllEtudiant();
     }
-    @GetMapping("/getById/{id}")
-    public Etudiant getById(@PathVariable int id){
-        return iEtudiantServices.getByID(id);
+    @GetMapping("/getByIdEtudiant/{id}")
+    public Etudiant getByIdEtudiant(@PathVariable int id){
+        return iEtudiantServices.getByIdEtudiant(id);
     }
     @DeleteMapping("/deleteEtudiant/{id}")
     private void deleteEtudiant(@PathVariable int id){

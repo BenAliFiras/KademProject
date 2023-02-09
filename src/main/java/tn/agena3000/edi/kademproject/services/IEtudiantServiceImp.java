@@ -22,12 +22,12 @@ public class IEtudiantServiceImp implements IEtudiantServices {
     }
 
     @Override
-    public List<Etudiant> getAll() {
+    public List<Etudiant> getAllEtudiant() {
         return etudiantRepository.findAll();
     }
 
     @Override
-    public Etudiant getByID(Integer id) {
+    public Etudiant getByIdEtudiant(Integer id) {
         return etudiantRepository.findById(id).orElse(null);
     }
 

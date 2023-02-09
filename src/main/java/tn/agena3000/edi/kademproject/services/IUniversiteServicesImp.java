@@ -23,12 +23,12 @@ public class IUniversiteServicesImp implements IUniversiteServices{
     }
 
     @Override
-    public List<Universite> getAll() {
+    public List<Universite> getAllUniversite() {
         return universiteRepository.findAll();
     }
 
     @Override
-    public Universite getByID(Integer id) {
+    public Universite getByIdUniversite(Integer id) {
         return universiteRepository.findById(id).orElse(null);
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface IDetailEquipeServices {
     void ajouterDetailEquipe(DetailEquipe de);
     void updateDetailEquipe(DetailEquipe de);
-    List<DetailEquipe> getAll();
-    DetailEquipe getByID(Integer id);
+    List<DetailEquipe> getAllDetailEquipe();
+    DetailEquipe getByIdDetailEquipe(Integer id);
     void deleteDetailEquipe(Integer id);
 }

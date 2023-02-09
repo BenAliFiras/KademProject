@@ -8,7 +8,7 @@ import java.util.List;
 public interface IDepartementServices {
     void ajouterDepartement(Departement d);
     void updateDepartement(Departement d);
-    List<Departement> getAll();
-    Departement getByID(Integer id);
+    List<Departement> getAllDepartement();
+    Departement getByIdDepartement(Integer id);
     void deleteDepartement(Integer id);
 }

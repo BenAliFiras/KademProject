@@ -13,19 +13,19 @@ public class EquipeController {
 
     @Autowired
     IEquipeServices iEquipeServices;
-    @GetMapping("/getAll")
-    public List<Equipe> getAll(){
-        return iEquipeServices.getAll();
+    @GetMapping("/getAllEquipe")
+    public List<Equipe> getAllEquipe(){
+        return iEquipeServices.getAllEquipe();
     }
-    @GetMapping("/getById/{id}")
-    public Equipe getById(@PathVariable int id){
-        return iEquipeServices.getByID(id);
+    @GetMapping("/getByIdEquipe/{id}")
+    public Equipe getByIdEquipe(@PathVariable int id){
+        return iEquipeServices.getByIdEquipe(id);
     }
     @DeleteMapping("/deleteEquipe/{id}")
     private void deleteEquipe(@PathVariable int id){
         iEquipeServices.deleteEquipe(id);
     }
-    @PostMapping("/ajouterEtudiant")
+    @PostMapping("/ajouterEquipe")
     public void ajouterEquipe(@RequestBody Equipe equipe){
         iEquipeServices.ajouterEquipe(equipe);
     }

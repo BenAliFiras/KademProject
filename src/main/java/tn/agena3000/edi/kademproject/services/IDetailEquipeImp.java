@@ -25,12 +25,12 @@ public class IDetailEquipeImp implements IDetailEquipeServices{
     }
 
     @Override
-    public List<DetailEquipe> getAll() {
+    public List<DetailEquipe> getAllDetailEquipe() {
         return detailEquipeRepository.findAll();
     }
 
     @Override
-    public DetailEquipe getByID(Integer id) {
+    public DetailEquipe getByIdDetailEquipe(Integer id) {
         return detailEquipeRepository.findById(id).orElse(null);
     }
 

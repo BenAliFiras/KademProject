@@ -15,13 +15,13 @@ public class ContratController {
         @Autowired
         private IContratServices iContratServices;
 
-        @GetMapping("/getAll")
-        public List<Contrat> getAll(){
-            return iContratServices.getAll();
+        @GetMapping("/getAllContrat")
+        public List<Contrat> getAllContrat(){
+            return iContratServices.getAllContrat();
         }
-        @GetMapping("/getById/{id}")
-        public Contrat getById(@PathVariable int id){
-            return iContratServices.getByID(id);
+        @GetMapping("/getByIdContrat/{id}")
+        public Contrat getByIdContrat(@PathVariable int id){
+            return iContratServices.getByIdContrat(id);
         }
         @DeleteMapping("/deleteContrat/{id}")
         private void deleteContrat(@PathVariable int id){
