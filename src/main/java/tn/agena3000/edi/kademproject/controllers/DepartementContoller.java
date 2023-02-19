@@ -1,5 +1,6 @@
 package tn.agena3000.edi.kademproject.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.agena3000.edi.kademproject.entities.Departement;
@@ -10,28 +11,30 @@ import tn.agena3000.edi.kademproject.services.IEquipeServices;
 import java.util.List;
 
 @RestController
+@RequestMapping("departement")
+@RequiredArgsConstructor
 public class DepartementContoller{
 
-    @Autowired
-    private IDepartementServices iDepartementServices;
+    //@Autowired
+    private final IDepartementServices iDepartementServices;
 
-    @GetMapping("/getAllDepartement")
+    @GetMapping()
     public List<Departement> getAllDepartement(){
         return iDepartementServices.getAllDepartement();
     }
-    @GetMapping("/getByIdDepartement/{id}")
+    @GetMapping("/{id}")
     public Departement getByIdDepartement(@PathVariable int id){
         return iDepartementServices.getByIdDepartement(id);
     }
-    @DeleteMapping("/deleteDepartement/{id}")
+    @DeleteMapping("/{id}")
     private void deleteDepartement(@PathVariable int id){
         iDepartementServices.deleteDepartement(id);
     }
-    @PostMapping("/ajouterDepartement")
+    @PostMapping()
     public void ajouterDepartement(@RequestBody Departement departement){
         iDepartementServices.ajouterDepartement(departement);
     }
-    @PutMapping("/updateDepartement")
+    @PutMapping()
     private Departement updateDepartement(@RequestBody Departement departement){
         iDepartementServices.updateDepartement(departement);
         return departement;

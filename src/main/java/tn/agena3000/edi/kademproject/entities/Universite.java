@@ -18,5 +18,5 @@ public class Universite {
     private int idUniv;
     private String nomUniv;
     @OneToMany
-    List<Departement> departements;
+    private List<Departement> departements;
 }

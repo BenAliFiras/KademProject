@@ -11,4 +11,5 @@ public interface IUniversiteServices {
     List<Universite> getAllUniversite();
     Universite getByIdUniversite(Integer id);
     void deleteUniversite(Integer id);
+    void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement);
 }
