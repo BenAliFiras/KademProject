@@ -1,5 +1,6 @@
 package tn.agena3000.edi.kademproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
@@ -24,6 +25,7 @@ public class Contrat {
     private Specialite specialite;
     private Boolean archive;
     private int montantContrat;
+    @JsonIgnore
     @ManyToOne
     private Etudiant etudiant;
 }

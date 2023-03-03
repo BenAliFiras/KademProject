@@ -35,4 +35,6 @@ public class IEqupeServiceImp implements IEquipeServices{
     public void deleteEquipe(Integer id) {
         equipeRepository.deleteById(id);
     }
+
+
 }

@@ -3,6 +3,7 @@ package tn.agena3000.edi.kademproject.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import tn.agena3000.edi.kademproject.entities.Departement;
 import tn.agena3000.edi.kademproject.entities.Universite;
 import tn.agena3000.edi.kademproject.repositories.DepartementRepository;
@@ -47,9 +48,9 @@ public class IUniversiteServicesImp implements IUniversiteServices{
         Universite universite = universiteRepository.findById(idUniversite).orElse(null);
         Departement departement = departementRepository.findById(idDepartement).orElse(null);
 
-        if(universite != null && departement != null){
+        Assert.notNull(universite, "Entity must not be null.");
             universite.getDepartements().add(departement);
             universiteRepository.save(universite);
-        }
+
     }
 }

@@ -1,5 +1,6 @@
 package tn.agena3000.edi.kademproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Equipe {
     @OneToOne
     private DetailEquipe detailEquipe;
     @ManyToMany
+    @JsonIgnore
     private List<Etudiant> etudiants;
 
 }
