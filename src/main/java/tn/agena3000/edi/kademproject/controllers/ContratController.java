@@ -15,28 +15,37 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ContratController {
 
-        //@Autowired
-        private final IContratServices iContratServices;
+    //@Autowired
+    private final IContratServices iContratServices;
 
-        @GetMapping()
-        public List<Contrat> getAllContrat(){
-            return iContratServices.getAllContrat();
-        }
-        @GetMapping("/{id}")
-        public Contrat getByIdContrat(@PathVariable int id){
-            return iContratServices.getByIdContrat(id);
-        }
-        @DeleteMapping("/{id}")
-        private void deleteContrat(@PathVariable int id){
-            iContratServices.deleteContrat(id);
-        }
-        @PostMapping()
-        public void ajouterContrat(@RequestBody Contrat contrat){
-            iContratServices.ajouterContrat(contrat);
-        }
-        @PutMapping()
-        private Contrat updateContrat(@RequestBody Contrat contrat){
-            iContratServices.updateContrat(contrat);
-            return contrat;
-        }
+    @GetMapping()
+    public List<Contrat> getAllContrat() {
+        return iContratServices.getAllContrat();
+    }
+
+    @GetMapping("/{id}")
+    public Contrat getByIdContrat(@PathVariable int id) {
+        return iContratServices.getByIdContrat(id);
+    }
+
+    @DeleteMapping("/{id}")
+    private void deleteContrat(@PathVariable int id) {
+        iContratServices.deleteContrat(id);
+    }
+
+    @PostMapping()
+    public void ajouterContrat(@RequestBody Contrat contrat) {
+        iContratServices.ajouterContrat(contrat);
+    }
+
+    @PutMapping()
+    private Contrat updateContrat(@RequestBody Contrat contrat) {
+        iContratServices.updateContrat(contrat);
+        return contrat;
+    }
+
+    @PutMapping()
+    public Contrat affectContratToEtudiant(@PathVariable Contrat ce, @RequestBody String nomE, @RequestBody String prenomE) {
+        return iContratServices.affectContratToEtudiant(ce, nomE, prenomE);
+    }
 }

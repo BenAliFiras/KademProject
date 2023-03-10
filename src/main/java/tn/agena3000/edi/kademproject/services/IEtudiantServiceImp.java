@@ -3,6 +3,7 @@ package tn.agena3000.edi.kademproject.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import tn.agena3000.edi.kademproject.entities.Contrat;
 import tn.agena3000.edi.kademproject.entities.Departement;
@@ -13,7 +14,6 @@ import tn.agena3000.edi.kademproject.repositories.DepartementRepository;
 import tn.agena3000.edi.kademproject.repositories.EquipeRepository;
 import tn.agena3000.edi.kademproject.repositories.EtudiantRepository;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class IEtudiantServiceImp implements IEtudiantServices {
     }
 
     @Override
-    @Transactional
+    @Transactional //org.
     public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe) {
         Contrat contrat = contratRepository.findById(idContrat).orElse(null);
         Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
