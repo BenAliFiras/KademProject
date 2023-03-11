@@ -2,7 +2,9 @@ package tn.agena3000.edi.kademproject.services;
 
 import tn.agena3000.edi.kademproject.entities.Universite;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public interface IUniversiteServices {
 
@@ -12,4 +14,5 @@ public interface IUniversiteServices {
     Universite getByIdUniversite(Integer id);
     void deleteUniversite(Integer id);
     void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement);
+    Map<String, Float> getMontantContratEntreDeuxDate(Integer idUniversite, LocalDate startDate, LocalDate endDate);
 }

@@ -46,9 +46,9 @@ public class IContratServiceImp implements IContratServices{
 
     @Override
     public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
-        Etudiant etudiant = etudiantRepository.findByNomEAndPrenomE(nomE, prenomE).orElse(null);
+        Etudiant etudiant = etudiantRepository.findByNomEAndPrenomE(nomE, prenomE);
         Assert.notNull(etudiant,"Etudiant not find");
-        Assert.notNull();
+
         if (etudiant == null || etudiant.getContrats().size() >= 5){
 
         }
