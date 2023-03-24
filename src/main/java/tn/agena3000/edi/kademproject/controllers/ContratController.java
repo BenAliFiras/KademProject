@@ -38,11 +38,11 @@ public class ContratController {
         iContratServices.ajouterContrat(contrat);
     }
 
-    @PutMapping()
+    /*@PutMapping()
     private Contrat updateContrat(@RequestBody Contrat contrat) {
         iContratServices.updateContrat(contrat);
         return contrat;
-    }
+    }*/
 
     @PutMapping()
     public Contrat affectContratToEtudiant(@PathVariable Contrat ce, @RequestBody String nomE, @RequestBody String prenomE) {

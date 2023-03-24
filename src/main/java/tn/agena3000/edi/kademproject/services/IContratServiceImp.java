@@ -10,7 +10,10 @@ import tn.agena3000.edi.kademproject.repositories.ContratRepository;
 import tn.agena3000.edi.kademproject.repositories.DepartementRepository;
 import tn.agena3000.edi.kademproject.repositories.EtudiantRepository;
 
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class IContratServiceImp implements IContratServices{
@@ -54,5 +57,18 @@ public class IContratServiceImp implements IContratServices{
         }
         ce.setEtudiant(etudiant);
         return contratRepository.save(ce);
+    }
+
+    @Override
+    public Map<String, Float> getMontantContratEntreDeuxDate(Integer idUniversite, LocalDate startDate, LocalDate endDate) {
+        List<Contrat> contrats = contratRepository.findByEtudiant_Departement_Universite_IdAndEstArchiveAndDateDebutGreaterThanEqualAndDateFinLessThanEqual(idUniversite, false, startDate, endDate);
+        Map<String, Float> montantsParSpecialite = new HashMap<>();
+        for (Contrat contrat : contrats) {
+            String specialite = contrat.getSpecialite().name();
+            float montant = montantsParSpecialite.getOrDefault(specialite, 0f);
+            montant += contrat.getMontantContrat();
+            montantsParSpecialite.put(specialite, montant);
+        }
+        return montantsParSpecialite;
     }
 }

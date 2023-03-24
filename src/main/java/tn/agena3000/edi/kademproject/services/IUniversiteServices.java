@@ -14,5 +14,4 @@ public interface IUniversiteServices {
     Universite getByIdUniversite(Integer id);
     void deleteUniversite(Integer id);
     void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement);
-    Map<String, Float> getMontantContratEntreDeuxDate(Integer idUniversite, LocalDate startDate, LocalDate endDate);
 }

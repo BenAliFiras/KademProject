@@ -69,16 +69,5 @@ public class IUniversiteServicesImp implements IUniversiteServices{
 
     }
 
-    @Override
-    public Map<String, Float> getMontantContratEntreDeuxDate(Integer idUniversite, LocalDate startDate, LocalDate endDate) {
-        List<Contrat> contrats = contratRepository.findByEtudiant_Departement_Universite_IdAndEstArchiveAndDateDebutGreaterThanEqualAndDateFinLessThanEqual(idUniversite, false, startDate, endDate);
-        Map<String, Float> montantsParSpecialite = new HashMap<>();
-        for (Contrat contrat : contrats) {
-            String specialite = contrat.getSpecialite().name();
-            float montant = montantsParSpecialite.getOrDefault(specialite, 0f);
-            montant += contrat.getMontantContrat();
-            montantsParSpecialite.put(specialite, montant);
-        }
-        return montantsParSpecialite;
-    }
+
 }
