@@ -14,6 +14,13 @@ public interface ContratRepository extends JpaRepository<Contrat, Integer> {
     Integer countContratByArchiveIsFalseAndEtudiant_NomEAndEtudiant_PrenomE(String nom, String Prenom);
 
 
-    Integer getMontantContratEntreDeuxDate(Date dateDebutContrat, Date dateFinContrat);
     List findByEtudiant_Departement_Universite_IdAndEstArchiveAndDateDebutGreaterThanEqualAndDateFinLessThanEqual(Integer idUniversite,Boolean estArchive, LocalDate startDate, LocalDate endDate);
+
+    @Query("select c from Contrat c where DATEDIFF(current_date,c.dateFinContrat)<15")
+    List<Contrat> dateExpi();
+
+    @Query("select c from Contrat c where DATEDIFF(current_date,c.dateFinContrat)<15 AND current_date < c.dateFinContrat")
+    List<Contrat> datePresqueExp();
+
+    Integer countContratByDateDebutContratAfterAndDateFinContratBefore(Date endDate, Date startDate);
 }

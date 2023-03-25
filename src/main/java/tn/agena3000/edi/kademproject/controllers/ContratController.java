@@ -2,12 +2,14 @@ package tn.agena3000.edi.kademproject.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.agena3000.edi.kademproject.entities.Contrat;
 import tn.agena3000.edi.kademproject.entities.Departement;
 import tn.agena3000.edi.kademproject.services.IContratServices;
 import tn.agena3000.edi.kademproject.services.IDepartementServices;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -47,5 +49,10 @@ public class ContratController {
     @PutMapping()
     public Contrat affectContratToEtudiant(@PathVariable Contrat ce, @RequestBody String nomE, @RequestBody String prenomE) {
         return iContratServices.affectContratToEtudiant(ce, nomE, prenomE);
+    }
+
+    @GetMapping("/nbrContratsValides/{end}/{start}")
+    Integer nbContratsValides(@PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd") Date end , @PathVariable("start")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date start) {
+        return iContratServices.nbContratsValides(end,start) ;
     }
 }
