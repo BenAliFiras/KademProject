@@ -1,5 +1,6 @@
 package tn.agena3000.edi.kademproject.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import tn.agena3000.edi.kademproject.services.IUniversiteServices;
 
 import java.util.List;
 
+@Tag(name = "UniversiteC")
 @RestController
 @RequestMapping("universite")
 @RequiredArgsConstructor

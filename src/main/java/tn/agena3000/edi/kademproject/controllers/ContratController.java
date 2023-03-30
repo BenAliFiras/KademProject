@@ -1,5 +1,6 @@
 package tn.agena3000.edi.kademproject.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -12,6 +13,7 @@ import tn.agena3000.edi.kademproject.services.IDepartementServices;
 import java.util.Date;
 import java.util.List;
 
+@Tag(name = "ContratC")
 @RestController
 @RequestMapping("contrat")
 @RequiredArgsConstructor
@@ -40,11 +42,11 @@ public class ContratController {
         iContratServices.ajouterContrat(contrat);
     }
 
-    /*@PutMapping()
+    @PutMapping()
     private Contrat updateContrat(@RequestBody Contrat contrat) {
         iContratServices.updateContrat(contrat);
         return contrat;
-    }*/
+    }
 
     @PutMapping()
     public Contrat affectContratToEtudiant(@PathVariable Contrat ce, @RequestBody String nomE, @RequestBody String prenomE) {

@@ -1,5 +1,6 @@
 package tn.agena3000.edi.kademproject.services;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -14,17 +15,16 @@ import tn.agena3000.edi.kademproject.repositories.EtudiantRepository;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class IContratServiceImp implements IContratServices{
+@RequiredArgsConstructor
+public  class IContratServiceImp implements IContratServices{
 
-    @Autowired
-    private ContratRepository contratRepository;
+    //@Autowired
+    private final ContratRepository contratRepository;
     @Autowired
     EtudiantRepository etudiantRepository;
     @Override
@@ -58,9 +58,16 @@ public class IContratServiceImp implements IContratServices{
         Assert.notNull(etudiant,"Etudiant not find");
 
         if (etudiant == null || etudiant.getContrats().size() >= 5){
-
+            int ContratA = 0;
+            ContratA = etudiant.getContrats().stream()
+                    .filter(contrat -> contrat.getArchive().equals(true))
+                    .collect(Collectors.toList())
+                    .size();
+            ContratA = contratRepository.countContratByArchiveIsTrueAndEtudiantIdEtudiant(etudiant.getIdEtudiant());
+            if(ContratA<=5){
+                ce.setEtudiant(etudiant);
+            }
         }
-        ce.setEtudiant(etudiant);
         return contratRepository.save(ce);
     }
 
@@ -87,7 +94,7 @@ public class IContratServiceImp implements IContratServices{
         contrat.setArchive(true);
         contratRepository.save(contrat);
     }
-    @Scheduled(cron = "* * 1 * * * ")
+    @Scheduled(cron = "*/30 * * * * * ")
     public void retrieveStatusContrat()
     {
         List<Contrat> contratsPresqueExp=contratRepository.datePresqueExp();

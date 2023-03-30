@@ -1,5 +1,7 @@
 package tn.agena3000.edi.kademproject.services;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.agena3000.edi.kademproject.entities.Departement;
@@ -8,10 +10,12 @@ import tn.agena3000.edi.kademproject.repositories.DepartementRepository;
 import java.util.List;
 
 @Service
+@Slf4j
+@RequiredArgsConstructor
 public class IDepartementServiceImp implements IDepartementServices{
 
-    @Autowired
-    private DepartementRepository departementRepository;
+    //@Autowired
+    private final DepartementRepository departementRepository;
     @Override
     public void ajouterDepartement(Departement d) {
         departementRepository.save(d);
