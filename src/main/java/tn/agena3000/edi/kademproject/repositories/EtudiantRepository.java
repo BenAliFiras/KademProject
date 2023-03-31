@@ -5,8 +5,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import tn.agena3000.edi.kademproject.entities.Etudiant;
 
+import java.util.List;
+
 public interface EtudiantRepository extends JpaRepository<Etudiant,Integer> {
     Etudiant findByNomEAndPrenomE(String nomE, String prenomE);
+    List<Etudiant> findEtudiantByDepartement(Integer idDepart);
 
     //requete avec JPQL
     //peut import le nom de la methode c'est different au keyword

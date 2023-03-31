@@ -11,4 +11,5 @@ public interface IEquipeServices {
     List<Equipe> getAllEquipe();
     Equipe getByIdEquipe(Integer id);
     void deleteEquipe(Integer id);
+    void faireEvoluerEquipes();
 }

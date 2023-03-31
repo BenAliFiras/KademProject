@@ -82,4 +82,13 @@ public class IEtudiantServiceImp implements IEtudiantServices {
         //contratRepository.save(contrat);
         return e;
     }
+
+    @Override
+    public List<Etudiant> getEtudiantsByDepartement(Integer idDepartement) {
+        //return etudiantRepository.findEtudiantByDepartement(idDepartement);
+        //2éme méthode
+        Departement departement = departementRepository.findById(idDepartement).orElse(null);
+        Assert.notNull(departement, "Entity must not be null.");
+        return departement.getEtudiants();
+    }
 }

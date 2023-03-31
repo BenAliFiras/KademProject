@@ -18,10 +18,10 @@ import java.util.List;
 public class EtudiantController {
     //@Autowired
     private final IEtudiantServices iEtudiantServices;
-    //@GetMapping()
-    //public String sayHello(){
-    //    return "hello";
-    //}
+    @GetMapping("/sayHello")
+    public String sayHello(){
+        return "hello";
+    }
     @GetMapping()
     public List<Etudiant> getAllEtudiant(){
         return iEtudiantServices.getAllEtudiant();
@@ -50,5 +50,9 @@ public class EtudiantController {
     @PostMapping("{idContrat}/{idEquipe}")
     public Etudiant addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant e,@PathVariable Integer idContrat, @PathVariable Integer idEquipe) {
         return iEtudiantServices.addAndAssignEtudiantToEquipeAndContract(e,idContrat,idEquipe);
+    }
+    @GetMapping("/getEtudiantsByDepartement/{idDepartement}")
+    public List<Etudiant> getEtudiantsByDepartement(@PathVariable Integer idDepartement) {
+        return iEtudiantServices.getEtudiantsByDepartement(idDepartement);
     }
 }

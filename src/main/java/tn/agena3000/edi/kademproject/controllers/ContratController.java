@@ -10,8 +10,10 @@ import tn.agena3000.edi.kademproject.entities.Departement;
 import tn.agena3000.edi.kademproject.services.IContratServices;
 import tn.agena3000.edi.kademproject.services.IDepartementServices;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Tag(name = "ContratC")
 @RestController
@@ -48,13 +50,22 @@ public class ContratController {
         return contrat;
     }
 
-    @PutMapping()
+    @PutMapping("/affectContratToEtudiant")
     public Contrat affectContratToEtudiant(@PathVariable Contrat ce, @RequestBody String nomE, @RequestBody String prenomE) {
         return iContratServices.affectContratToEtudiant(ce, nomE, prenomE);
     }
 
+    @GetMapping("/montantContrat")
+    public Map<String, Float> getMontantContratEntreDeuxDate(Integer idUniv, LocalDate startDate, LocalDate endDate){
+        return iContratServices.getMontantContratEntreDeuxDate(idUniv,startDate,endDate);
+    }
     @GetMapping("/nbrContratsValides/{end}/{start}")
     Integer nbContratsValides(@PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd") Date end , @PathVariable("start")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date start) {
         return iContratServices.nbContratsValides(end,start) ;
+    }
+
+    @PostMapping("/updateStatut")
+    public void retrieveAndUpdateStatusContrat() {
+        iContratServices.retrieveAndUpdateStatusContrat();
     }
 }

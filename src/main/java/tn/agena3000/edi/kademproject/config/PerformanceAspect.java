@@ -17,7 +17,7 @@ public class PerformanceAspect {
         long executionTime = System.currentTimeMillis() - t1;
         String methodeName = pjp.getSignature().getName();
 
-        log.info("The runtime of the metod ( " + methodeName + " ) = " + executionTime + " milliseconds.");
+        log.debug("The runtime of the method ( " + methodeName + " ) = " + executionTime + " milliseconds.");
         return obj;
     }
 }

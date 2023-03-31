@@ -72,9 +72,10 @@ public  class IContratServiceImp implements IContratServices{
     }
 
     @Override
-    public Map<String, Float> getMontantContratEntreDeuxDate(Integer idUniversite, LocalDate startDate, LocalDate endDate) {
-        List<Contrat> contrats = contratRepository.findByEtudiant_Departement_Universite_IdAndEstArchiveAndDateDebutGreaterThanEqualAndDateFinLessThanEqual(idUniversite, false, startDate, endDate);
+    public Map<String, Float> getMontantContratEntreDeuxDate(Integer idUniv, LocalDate startDate, LocalDate endDate) {
+        List<Contrat> contrats = new ArrayList<>();
         Map<String, Float> montantsParSpecialite = new HashMap<>();
+        contrats.addAll(contratRepository.findAll());
         for (Contrat contrat : contrats) {
             String specialite = contrat.getSpecialite().name();
             float montant = montantsParSpecialite.getOrDefault(specialite, 0f);
@@ -89,14 +90,9 @@ public  class IContratServiceImp implements IContratServices{
         return contratRepository.countContratByDateDebutContratAfterAndDateFinContratBefore(endDate,startDate);
     }
 
-    public void setArchive(Contrat c){
-        Contrat contrat = contratRepository.findById(c.getIdContrat()).get();
-        contrat.setArchive(true);
-        contratRepository.save(contrat);
-    }
+    @Override
     @Scheduled(cron = "*/30 * * * * * ")
-    public void retrieveStatusContrat()
-    {
+    public void retrieveAndUpdateStatusContrat() {
         List<Contrat> contratsPresqueExp=contratRepository.datePresqueExp();
         List<Contrat> contratsExp=contratRepository.dateExpi();
 
@@ -112,5 +108,11 @@ public  class IContratServiceImp implements IContratServices{
             string.append("specialité : ").append(c.getSpecialite()).append("\n");
         }
         log.info(string.toString());
+    }
+
+    public void setArchive(Contrat c){
+        Contrat contrat = contratRepository.findById(c.getIdContrat()).get();
+        contrat.setArchive(true);
+        contratRepository.save(contrat);
     }
 }

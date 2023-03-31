@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAspectJAutoProxy
 @SpringBootApplication
 public class KademProjectApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(KademProjectApplication.class, args);
     }

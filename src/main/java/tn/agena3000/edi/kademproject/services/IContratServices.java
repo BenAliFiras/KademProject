@@ -15,8 +15,7 @@ public interface IContratServices {
     Contrat getByIdContrat(Integer id);
     void deleteContrat(Integer id);
     Contrat affectContratToEtudiant (Contrat ce, String nomE , String prenomE);
-
     Map<String, Float> getMontantContratEntreDeuxDate(Integer idUniversite, LocalDate startDate, LocalDate endDate);
-
     Integer nbContratsValides(Date endDate, Date startDate);
+    void retrieveAndUpdateStatusContrat();
 }

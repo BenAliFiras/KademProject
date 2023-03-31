@@ -16,9 +16,6 @@ public interface ContratRepository extends JpaRepository<Contrat, Integer> {
     @Query("select count(c) from Contrat c where c.archive = true and c.etudiant.idEtudiant = ?1")
     Integer countContratByArchiveIsTrueAndEtudiantIdEtudiant(Integer idEtudiant);
 
-
-    List findByEtudiant_Departement_Universite_IdAndEstArchiveAndDateDebutGreaterThanEqualAndDateFinLessThanEqual(Integer idUniversite,Boolean estArchive, LocalDate startDate, LocalDate endDate);
-
     @Query("select c from Contrat c where DATEDIFF(current_date,c.dateFinContrat)<15")
     List<Contrat> dateExpi();
 

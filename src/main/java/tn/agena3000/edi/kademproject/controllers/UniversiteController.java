@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.agena3000.edi.kademproject.entities.Departement;
 import tn.agena3000.edi.kademproject.entities.Etudiant;
 import tn.agena3000.edi.kademproject.entities.Universite;
 import tn.agena3000.edi.kademproject.repositories.UniversiteRepository;
@@ -44,5 +45,9 @@ public class UniversiteController {
     @PutMapping("{idUniversite}/{idDepartement}")
     public void assignUniversiteToDepartement(@PathVariable Integer idUniversite, @PathVariable Integer idDepartement) {
         iUniversiteServices.assignUniversiteToDepartement(idUniversite,idDepartement);
+    }
+    @PutMapping("DepartementByUniversite")
+    public List<Departement> retrieveDepartementsByUniversite(@PathVariable Integer idUniversite) {
+        return iUniversiteServices.retrieveDepartementsByUniversite(idUniversite);
     }
 }
